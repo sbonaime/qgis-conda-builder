@@ -72,9 +72,12 @@ jobs:
       - name: 📦 Package
         shell: pwsh
         run: |
-          wget https://github.com/mamba-org/micromamba-releases/releases/download/2.0.8-0/micromamba-osx-arm64
+          wget https://github.com/mamba-org/micromamba-releases/releases/download/1.5.12-0/micromamba-osx-arm64
           ls -al
           conda build constructor
+          ls -al
+          ls -al  /Users/runner/miniconda3/envs/constructor/conda-bld/
+          ls -al  /Users/runner/miniconda3/envs/constructor/conda-bld/osx-arm64/
           conda install /Users/runner/miniconda3/envs/constructor/conda-bld/osx-arm64/*.tar.bz2
           constructor --platform=${{ matrix.conda_platform }} --conda-exe=micromamba-osx-arm64  .
 
