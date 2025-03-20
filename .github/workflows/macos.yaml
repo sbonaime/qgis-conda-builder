@@ -75,6 +75,13 @@ jobs:
         run: |
           wget https://github.com/mamba-org/micromamba-releases/releases/download/2.0.8-0/micromamba-osx-arm64
           ls -al
+      
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+
+      - name: 📦 Package_suite
+        shell: pwsh
+        run: |   
           conda build constructor
           ls -al  /Users/runner/miniconda3/envs/constructor/conda-bld/
           ls -al  /Users/runner/miniconda3/envs/constructor/conda-bld/osx-64/
