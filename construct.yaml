@@ -4,7 +4,7 @@ channels:
   - "conda-forge"
 specs:
   - qgis=__ver__
-  - python=3.13
+  - python=3.12
   - libgdal-arrow-parquet
 license_file: COPYING
   # welcome_image: photo.png  # [win]
