@@ -28,7 +28,7 @@ jobs:
         run: |
           QGIS_VERSION=$(conda search -c conda-forge -f qgis | grep py311 | tail -n 1 | tr -s ' ' | cut -f 2 -d ' ')
           QGIS_VERSION_SHORT=$(echo $QGIS_VERSION | cut -d'.'  -f 1,2)
-          MICROMAMBA_PLATFORM=$(conda search -c conda-forge -f micromamba  tail -n 1 | tr -s ' ' | cut -f 2 -d ' ')
+          MICROMAMBA_PLATFORM=$(conda search -c conda-forge -f micromamba  | tail -n 1 | tr -s ' ' | cut -f 2 -d ' ')
           echo QGIS_VERSION=$QGIS_VERSION >> $GITHUB_OUTPUT
           echo QGIS_VERSION_SHORT=$QGIS_VERSION_SHORT >> $GITHUB_OUTPUT
           echo MICROMAMBA_PLATFORM=$MICROMAMBA_PLATFORM >> $GITHUB_OUTPUT
