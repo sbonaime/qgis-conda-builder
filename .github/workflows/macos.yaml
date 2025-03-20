@@ -75,7 +75,7 @@ jobs:
           wget https://github.com/mamba-org/micromamba-releases/releases/download/2.0.8-0/micromamba-${{ matrix.conda_platform }}
           ls -al
           conda build constructor
-          conda install /Users/runner/miniconda3/envs/constructor/conda-bld/osx-64/*.tar.bz2
+          conda install /Users/runner/miniconda3/envs/constructor/conda-bld/${{ matrix.conda_platform }}/*.tar.bz2
           constructor --platform=${{ matrix.conda_platform }} --conda-exe=micromamba-${{ matrix.conda_platform }} .
 
       - name: 📦 Upload artifacts
