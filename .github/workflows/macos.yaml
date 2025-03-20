@@ -45,9 +45,6 @@ jobs:
           - architecture: 'arm64'
             conda_platform: 'osx-arm64'
     steps:
-      - name: 🐣 Checkout
-        uses: actions/checkout@v4
-
       - name: 🐣 Checkout Constructor
         uses: actions/checkout@v4
         with:
