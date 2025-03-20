@@ -42,8 +42,6 @@ jobs:
     strategy:
       matrix:
         include:
-          - architecture: 'x86_64'
-            conda_platform: 'osx-64'
           - architecture: 'arm64'
             conda_platform: 'osx-arm64'
     steps:
