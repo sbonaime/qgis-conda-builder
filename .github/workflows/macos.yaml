@@ -64,7 +64,7 @@ jobs:
           sed -i '' "s/__shortver__/$QGIS_VERSION_SHORT/g" construct.yaml
 
 
-      - uses: conda-incubator/setup-miniconda@v2
+      - uses: conda-incubator/setup-miniconda@v3.1.1
         with:
           miniconda-version: "latest"
           activate-environment: "constructor"
