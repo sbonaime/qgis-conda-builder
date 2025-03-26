@@ -73,7 +73,7 @@ jobs:
       - name: 📦 Package
         shell: pwsh
         run: |
-          wget https://github.com/mamba-org/micromamba-releases/releases/download/2.0.8-0/micromamba-osx-arm64
+          curl -s https://api.github.com/repos/mamba-org/micromamba-releases/releases/latest | grep 'browser_download_url.*micromamba-${{ matrix.conda_platform }}"' | cut -d : -f 2,3 | tr -d '"' | wget -qi -
           ls -al
       
       - name: Setup tmate session
