@@ -28,6 +28,7 @@ jobs:
         run: |
           QGIS_VERSION=$(conda search -c conda-forge -f qgis | grep py311 | tail -n 1 | tr -s ' ' | cut -f 2 -d ' ')
           QGIS_VERSION_SHORT=$(echo $QGIS_VERSION | cut -d'.'  -f 1,2)
+          MICROMAMBA_PLATFORM=$(conda search -c conda-forge -f micromamba  | tail -n 1 | tr -s ' ' | cut -f 2 -d ' ')
           echo QGIS_VERSION=$QGIS_VERSION >> $GITHUB_OUTPUT
           echo QGIS_VERSION_SHORT=$QGIS_VERSION_SHORT >> $GITHUB_OUTPUT
           echo MICROMAMBA_PLATFORM=$MICROMAMBA_PLATFORM >> $GITHUB_OUTPUT
@@ -74,10 +75,7 @@ jobs:
       - name: 📦 Package
         shell: pwsh
         run: |
-          curl -s https://api.github.com/repos/mamba-org/micromamba-releases/releases/latest
-          curl -s https://api.github.com/repos/mamba-org/micromamba-releases/releases/latest | grep 'browser_download_url.*micromamba-${{ matrix.conda_platform }}"' | cut -d : -f 2,3 | tr -d '"'
           curl -s https://api.github.com/repos/mamba-org/micromamba-releases/releases/latest | grep 'browser_download_url.*micromamba-${{ matrix.conda_platform }}"' | cut -d : -f 2,3 | tr -d '"' | wget -qi -
-          wget https://github.com/mamba-org/micromamba-releases/releases/download/1.4.9-0/micromamba-${{ matrix.conda_platform }}
           ls -al
           conda build constructor
           conda install /Users/runner/miniconda3/envs/constructor/conda-bld/osx-64/*.tar.bz2
